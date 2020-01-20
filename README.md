@@ -1,4 +1,4 @@
-# Text-Mining-Analysis-on-realDonalTrump-Twitter-Tweets-Using-Tweepy-and-NLTK
+# Text-Mining-Analysis-on-realDonalTrump-Twitter-Tweets-Using-Tweepy
 
 This is a Text Mining project on @realDonaldTrump Twitter Tweets from 1/11/2020 to 1/17/2020. The projects include several parts:
 
