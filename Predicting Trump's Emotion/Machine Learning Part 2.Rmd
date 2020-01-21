@@ -1,0 +1,41 @@
+```{r}
+library(e1071)
+library(caret)
+library(quanteda)
+library(irlba)
+library(visdat)
+library(doSNOW)
+```
+
+Read Data
+
+```{r}
+Trump = read.csv('Trump.csv',stringsAsFactors = FALSE)
+Trump = Trump[,2:3]
+```
+
+```{r}
+tokens = tokens(Trump$Tweets,
+                      remove_numbers = TRUE, remove_punct = TRUE,
+                      remove_symbols = TRUE, remove_hyphens = TRUE)
+tokens = tokens_tolower(tokens)
+tokens = tokens_select(tokens,stopwords(),
+                             selection = 'remove')
+tokens = tokens_wordstem(tokens, language = "english")
+```
+
+```{r}
+dfm = dfm(tokens,tolower=FALSE)
+dfm_matrix = as.matrix(dfm)
+dim(dfm_matrix)
+```
+
+```{r}
+tokens_df = cbind(Label = Trump$Label,convert(dfm,to="data.frame"))
+tokens_df = tokens_df[,-2]
+names(tokens_df) = make.names(names(tokens_df))
+```
+
+```{r}
+write.csv(tokens_df,"tokens.csv", row.names = FALSE)
+```
