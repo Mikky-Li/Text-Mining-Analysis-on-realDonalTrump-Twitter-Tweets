@@ -7,8 +7,6 @@ library(visdat)
 library(doSNOW)
 ```
 
-Read Data
-
 ```{r}
 Trump = read.csv('Trump.csv',stringsAsFactors = FALSE)
 Trump = Trump[,2:3]
